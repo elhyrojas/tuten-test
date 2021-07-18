@@ -1,0 +1,31 @@
+<div class="absolute-center" *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="!isLoading" class="center">
+    <div style="text-align: center;">
+        <img width="40%" src="https://angular.io/assets/images/logos/angular/angular.svg">
+        <mat-card class="login-card">
+            <mat-card-title>Iniciar Sesión</mat-card-title>
+            <mat-card-content>
+                <div [formGroup]="form">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Usuario</mat-label>
+                        <input formControlName="user" matInput type="text">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Contraseña</mat-label>
+                        <input formControlName="password" matInput type="password">
+                    </mat-form-field>
+
+                    <div class="button">
+                        <button type="submit" mat-raised-button color="warn" (click)="login()">INICIAR
+                            SESIÓN</button>
+                    </div>
+
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

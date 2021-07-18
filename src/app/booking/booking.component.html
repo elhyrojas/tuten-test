@@ -1,0 +1,70 @@
+<div class="absolute-center" *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="!isLoading" class="white-background">
+    <app-header></app-header>
+    <div>
+        <mat-card class="booking-card">
+            <mat-card-title>Lista de Reservaciones</mat-card-title>
+            <div [formGroup]="form" class="filter">
+                <mat-form-field appearance="outline" class="input-width">
+                    <mat-label>BookingId</mat-label>
+                    <input matInput (keyup)="applyFilter()" formControlName="id">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="input-width">
+                    <mat-label>Precio</mat-label>
+                    <input matInput (keyup)="applyFilter()" formControlName="price">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="input-width">
+                    <select matNativeControl formControlName="options" (change)="applyFilter()">
+                        <option value="like">Like</option>
+                        <option value="greaterThan">>=</option>
+                        <option value="lessThan">
+                            <=< /option>
+                    </select>
+                </mat-form-field>
+            </div>
+
+            <mat-card-content>
+                <div>
+                    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                        <ng-container matColumnDef="bookingId">
+                            <th mat-header-cell *matHeaderCellDef> BookingId </th>
+                            <td mat-cell *matCellDef="let element"> {{element.bookingId}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="name">
+                            <th mat-header-cell *matHeaderCellDef> Cliente </th>
+                            <td mat-cell *matCellDef="let element"> {{element.tutenUserClient.firstName}}
+                                {{element.tutenUserClient.lastName}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="bookingTime">
+                            <th mat-header-cell *matHeaderCellDef> Fecha de Creación </th>
+                            <td mat-cell *matCellDef="let element"> {{element.bookingCreatedTime}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="streetAddress">
+                            <th mat-header-cell *matHeaderCellDef> Dirección </th>
+                            <td mat-cell *matCellDef="let element"> {{element.locationId.streetAddress}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="bookingPrice">
+                            <th mat-header-cell *matHeaderCellDef> Precio </th>
+                            <td mat-cell *matCellDef="let element"> {{element.bookingPrice}} </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                </div>
+                <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+                </mat-paginator>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
