@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  url_path: "https://dev.tuten.cl/TutenREST/rest/user/"
 };
