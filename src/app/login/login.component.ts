@@ -29,7 +29,7 @@ export class LoginComponent {
     
     createForm() {
         this.form = this.formBuilder.group({
-            user: ["testapis@tuten.cl", Validators.required],
+            user: ["", [Validators.required, Validators.email]],
             password: ["", Validators.required]
         })
     }

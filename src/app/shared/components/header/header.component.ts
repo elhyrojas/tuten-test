@@ -7,10 +7,16 @@ import { Router } from '@angular/router';
     styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+    isActive: boolean
 
     constructor(
         private router: Router
-    ) { }
+    ) {
+        this.isActive = true;
+        if (this.router.url.includes("/utc")) {
+            this.isActive = false;
+        }
+    }
 
     ngOnInit(): void {
     }

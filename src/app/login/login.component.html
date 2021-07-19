@@ -20,7 +20,8 @@
                     </mat-form-field>
 
                     <div class="button">
-                        <button type="submit" mat-raised-button color="warn" (click)="login()">INICIAR
+                        <button [disabled]="!form.valid" type="submit" mat-raised-button color="warn"
+                            (click)="login()">INICIAR
                             SESIÓN</button>
                     </div>
 

@@ -109,5 +109,13 @@ export class BookingComponent implements OnInit {
         return false
     }
 
+    clearFilter() {
+        this.form.patchValue({
+            id: '',
+            price: '',
+            options: 'like'
+        })
+        this.loadDataSource(this.bookings)
+    }
 
 }

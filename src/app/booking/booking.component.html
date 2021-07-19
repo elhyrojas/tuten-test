@@ -8,6 +8,12 @@
         <mat-card class="booking-card">
             <mat-card-title>Lista de Reservaciones</mat-card-title>
             <div [formGroup]="form" class="filter">
+                <div (click)="clearFilter()" class="clear-filter" matTooltip="Limpiar Filtros" matTooltipPosition="above">
+                    <span class="material-icons">
+                        clear
+                    </span>
+                </div>
+
                 <mat-form-field appearance="outline" class="input-width">
                     <mat-label>BookingId</mat-label>
                     <input matInput (keyup)="applyFilter()" formControlName="id">
@@ -22,8 +28,7 @@
                     <select matNativeControl formControlName="options" (change)="applyFilter()">
                         <option value="like">Like</option>
                         <option value="greaterThan">>=</option>
-                        <option value="lessThan">
-                            <=< /option>
+                        <option value="lessThan"><=</option>
                     </select>
                 </mat-form-field>
             </div>

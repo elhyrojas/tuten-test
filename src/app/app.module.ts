@@ -15,6 +15,8 @@ import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MatPaginatorIntlEsp } from './shared/utils/matPaginatorIntlEsp';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { AuthServiceGuard } from 'src/services/auth-service.guard';
+import { UtcService } from 'src/services/utc.service';
+import { MatTimepickerModule } from 'mat-timepicker';
 
 @NgModule({
   declarations: [
@@ -31,13 +33,15 @@ import { AuthServiceGuard } from 'src/services/auth-service.guard';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTimepickerModule
   ],
   providers: [
     LoginService,
     BookingService,
     { provide: MatPaginatorIntl, useClass: MatPaginatorIntlEsp },
-    AuthServiceGuard
+    AuthServiceGuard,
+    UtcService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,1 +1,47 @@
-<p>utc works!</p>
+<div class="absolute-center" *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="!isLoading" class="white-background">
+    <app-header></app-header>
+    <div>
+        <mat-card class="utc-card">
+            <mat-card-title style="padding-bottom: 5%;">Convertidor UTC</mat-card-title>
+            <mat-card-content>
+                <div [formGroup]="form">
+                    <div class="fields">
+                        <!-- <mat-form-field appearance="outline" class="input-width">
+                            <mat-label>Hora</mat-label>
+                            <input matTimepicker #t="matTimepicker" name="time" mode="24h"
+                                [disableDialogOpenOnClick]="false" cancelLabel="Cancelar" color="warn"
+                                formControlName="time">
+                            <mat-icon matSuffix (click)="t.showDialog()">access_time</mat-icon>
+                        </mat-form-field> -->
+                        <mat-form-field appearance="outline" class="input-width">
+                            <mat-label>Hora</mat-label>
+                            <input matInput type="time" step="2" formControlName="time" class="input-size">
+                        </mat-form-field>
+                    </div>
+                    
+                    <div class="fields">
+                        <mat-form-field appearance="outline" class="input-width">
+                            <mat-label>Zona Horaria</mat-label>
+                            <mat-select formControlName="timezone">
+                                <mat-option *ngFor="let timezone of timezones" [value]="timezone.offset" class="input-size">
+                                    {{ timezone.text }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="button">
+                        <button [disabled]="!form.valid" type="submit" mat-raised-button color="warn" (click)="calculate()">CALCULAR</button>
+                    </div>
+                </div>
+                <div class="utc-converter">
+                    <h2> {{ UTCconverter }} </h2>
+                </div>
+               
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

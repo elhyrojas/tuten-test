@@ -3,6 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { AuthServiceGuard } from "src/services/auth-service.guard";
 import { BookingComponent } from "./booking/booking.component";
 import { LoginComponent } from "./login/login.component";
+import { UtcComponent } from "./utc/utc.component";
 
 const routes: Routes = [
     {
@@ -18,6 +19,10 @@ const routes: Routes = [
         path: 'bookings',
         component: BookingComponent,
         canActivate: [AuthServiceGuard]
+    },
+    {
+        path: 'utc',
+        component: UtcComponent
     }
 ];
 

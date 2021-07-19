@@ -1,8 +1,8 @@
 <mat-toolbar color="warn">
     <mat-toolbar-row>
-        <span>Tuten Booking</span>
+        <span>Tuten Test</span>
         <span class="spacer"></span>
-        <button mat-icon-button (click)="logout()">
+        <button *ngIf="isActive" mat-icon-button (click)="logout()" matTooltip="Cerrar Sesión">
             <span class="material-icons">
                 logout
             </span>
