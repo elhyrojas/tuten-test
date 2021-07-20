@@ -1,5 +1,5 @@
 <div class="absolute-center" *ngIf="isLoading">
-    <mat-spinner></mat-spinner>
+    <mat-spinner color="inherit"></mat-spinner>
 </div>
 
 <div *ngIf="!isLoading" class="white-background">
@@ -10,16 +10,9 @@
             <mat-card-content>
                 <div [formGroup]="form">
                     <div class="fields">
-                        <!-- <mat-form-field appearance="outline" class="input-width">
-                            <mat-label>Hora</mat-label>
-                            <input matTimepicker #t="matTimepicker" name="time" mode="24h"
-                                [disableDialogOpenOnClick]="false" cancelLabel="Cancelar" color="warn"
-                                formControlName="time">
-                            <mat-icon matSuffix (click)="t.showDialog()">access_time</mat-icon>
-                        </mat-form-field> -->
                         <mat-form-field appearance="outline" class="input-width">
                             <mat-label>Hora</mat-label>
-                            <input matInput type="time" step="2" formControlName="time" class="input-size">
+                            <input matInput mode="12h" type="time" step="2" formControlName="time" class="input-size">
                         </mat-form-field>
                     </div>
                     
@@ -27,8 +20,8 @@
                         <mat-form-field appearance="outline" class="input-width">
                             <mat-label>Zona Horaria</mat-label>
                             <mat-select formControlName="timezone">
-                                <mat-option *ngFor="let timezone of timezones" [value]="timezone.offset" class="input-size">
-                                    {{ timezone.text }}
+                                <mat-option *ngFor="let tz of timezones" [value]="tz.value" class="input-size">
+                                    {{ tz.text }}
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>

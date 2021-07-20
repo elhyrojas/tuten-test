@@ -27,6 +27,7 @@ export class UtcComponent implements OnInit {
 
     ngOnInit(): void {
         this.timezones = timezones
+        console.log(this.timezones)
     }
 
     createForm() {
@@ -37,12 +38,14 @@ export class UtcComponent implements OnInit {
     }
 
     calculate() {
+        let tz: any;
         this.isLoading = true;
         this.time = this.form.get("time")?.value;
-        this.timezone = this.form.get("timezone")?.value.toString();
+        tz = this.form.get("timezone")?.value.toString();
+        this.timezone = this.timezones.find(x => x.value === tz).offset.toString()
         this.utcService.utcCalculate(this.time, this.timezone).subscribe(response => {
             this.UTCconverter = response.response.time + " UTC";
-            this.isLoading = false;
+            this.isLoading = false;    
         },
         (error) => {
             this.isLoading = false
