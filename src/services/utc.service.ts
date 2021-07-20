@@ -16,6 +16,6 @@ export class UtcService {
         let headers = {
             'Content-Type': 'application/json'
         };
-        return this.http.post<any>('http://localhost:8080/calculate', { time: time, timezone: timezone }, { headers: headers });
+        return this.http.post<any>('https://tuten-test-utc.herokuapp.com/api/calculate', { time: time, timezone: timezone }, { headers: headers });
     }
 }
