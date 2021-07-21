@@ -39,7 +39,6 @@ export class LoginComponent {
         this.user = new User();
         this.user.user = this.form.value.user;
         this.user.pass = this.form.value.password;
-        console.log(this.user)
         this.loginService.login(this.user).subscribe(response => {
             localStorage.setItem("token", response.sessionTokenBck)
             this.isLoading = false
